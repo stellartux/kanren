@@ -1,0 +1,2 @@
+let Q,W=(v,s)=>v?.id&&v!=s[v.id]?W(s[v.id],s):v,S=(u,v,s)=>Object.assign({},s,{[u]:v}),U=(u,v,s,y=W(u,s),z=W(v,s))=>y===z?s:y?.id?S(y.id,z,s):z?.id?S(z.id,y,s):z?.pop&&y?.length==z.length&&y.reduce?.((u,v,s)=>U(v,z[s],u),s)
+export let identical=Q=(u,v)=>function*(s={}){if(s=U(u,v,s))yield s},disj=(...r)=>function*(s,f){for(f of r)yield*f(s)},conj=(l=Q(),...r)=>r[0]?function*(s){for(s of l(s))yield*conj(...r)(s)}:l,callFresh=(id,f)=>s=>f(s=S(id,{id},s))(s),delay=(f,r)=>s=>f(r)(s),fail=disj(),succeed=Q()
